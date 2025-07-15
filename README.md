@@ -1,10 +1,8 @@
 # WeScan – Vulnerability Scanner
 
-## Project Title  
 **WeScan: A Lightweight Web Application Vulnerability Scanner**
-
-## Objective  
-To develop a Python-based tool that scans web applications for common security vulnerabilities, including Cross-Site Scripting (XSS), SQL Injection (SQLi), and Cross-Site Request Forgery (CSRF). The goal is to identify exploitable weaknesses and present the results through an intuitive web interface and downloadable PDF reports.
+  
+A Python-based tool that scans web applications for common security vulnerabilities, including Cross-Site Scripting (XSS), SQL Injection (SQLi), and Cross-Site Request Forgery (CSRF). The goal is to identify exploitable weaknesses and present the results through an intuitive web interface and downloadable PDF reports.
 
 ## Detected Vulnerabilities
 
