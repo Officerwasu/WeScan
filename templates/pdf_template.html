@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WeScan - Vulnerability Report</title>
+
+  <!-- Read CSS content and embed during render -->
+  <style>
+    {{ pdf_css | safe }}
+  </style>
+</head>
+<body>
+
+    <div class="report-header">
+    <h1>WeScan</h1>
+    <h2>Automated Web Application Vulnerability Report</h2>
+    <p class="subtle">Generated on {{ now.strftime('%Y-%m-%d %H:%M') }}</p>
+  </div>
+
+  <h2>Summary</h2>
+<div class="summary">
+  <p><strong>Total Vulnerabilities Found:</strong> {{ results|length }}</p>
+
+  <div class="vuln-summary">
+    <p><strong>XSS (Cross-Site Scripting):</strong> {{ counts.xss }}</p>
+    <p class="explanation">
+      XSS occurs when untrusted data is included in a webpage without proper validation, allowing attackers to run malicious scripts in the victim’s browser.
+    </p>
+
+    <p><strong>SQLi (SQL Injection):</strong> {{ counts.sqli }}</p>
+    <p class="explanation">
+      SQL Injection vulnerabilities allow attackers to manipulate backend SQL queries by injecting malicious inputs, potentially exposing or altering database data.
+    </p>
+
+    <p><strong>CSRF (Cross-Site Request Forgery):</strong> {{ counts.csrf }}</p>
+    <p class="explanation">
+      CSRF tricks a user’s browser into sending unauthorized commands to a web application where they are authenticated, leading to unintended actions.
+    </p>
+  </div>
+</div>
+
+
+  <h2>Detailed Findings</h2>
+  {% for result in results %}
+    <div class="vuln {{ result.type|lower }}">
+      <h3>{{ result.type }}</h3>
+      <p><strong>URL:</strong> {{ result.url }}</p>
+      {% if result.payload %}
+        <p><strong>Payload:</strong> <code>{{ result.payload }}</code></p>
+      {% endif %}
+      <p><strong>Evidence:</strong> {{ result.evidence }}</p>
+      <p><strong>Severity:</strong> {{ result.severity }}</p>
+    </div>
+  {% endfor %}
+
+  <div class="footer">
+    WeScan by Vedant Adhikari
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vulnerability Scanner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const loading = document.getElementById("loading");
+
+      form.addEventListener("submit", function () {
+        loading.style.display = "block";
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <body>
+  <header class="header">
+    <h1>WeScan</h1>
+    <h2>Automated Web Vulnerability Scanner</h2>
+  </header>
+
+
+    <div id="loading" style="display:none;">
+      <div class="spinner"></div>
+      <p>Scanning, please wait...</p>
+    </div>
+
+    <form method="POST">
+      <label for="url">Enter Target URL:</label>
+      <input type="url" id="url" name="url" placeholder="https://example.com" required />
+      <button type="submit">Start Scan</button>
+    </form>
+
+    {% if results %}
+      <div>
+        {% for result in results %}
+          <div class="result {{ result.type|lower }}">
+            <h3>{{ result.type }}</h3>
+            <p><strong>URL:</strong> {{ result.url }}</p>
+            {% if result.payload %}
+              <p><strong>Payload:</strong> <code>{{ result.payload }}</code></p>
+            {% endif %}
+            <p><strong>Evidence:</strong> {{ result.evidence }}</p>
+            <p><strong>Severity:</strong> {{ result.severity }}</p>
+          </div>
+        {% endfor %}
+
+        <form action="/download-report" method="get">
+          <button type="submit" class="download-btn">Download PDF Report</button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
