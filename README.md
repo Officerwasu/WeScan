@@ -94,7 +94,7 @@ Each result includes:
 - Explored deployment on platforms like Railway and encountered real-world constraints.
 
 ## Future Improvements
-
+ 
 - Support for additional vulnerabilities such as open redirects, IDOR, or clickjacking.
 - Database integration for saving historical scan results.
 - Authentication support and session management.
