@@ -1,1 +1,2 @@
-web: gunicorn app:app
+[start]
+cmd = "gunicorn main:app"
