@@ -40,18 +40,21 @@ Vuln Scanner/
 ```
 │
 ├── app.py # Main Flask app
-├── scanner.py # Scanning logic
-├── csrf.py # CSRF-specific checks
-├── generate_pdf.py # PDF rendering script
+├── payloads.py # Payloads for xss, sqli
+├── scanner.py # Scanning Logic
+├── generate.py # PDF rendering script
 │
 ├── templates/
 │ ├── index.html # Main UI
 │ ├── pdf_template.html # Template for PDF generation
 │
 ├── static/
-│ ├── styles.css # Custom stylesheet
-│ └── loader.css # CSS for loading animation
+│ ├── styles.css # CSS for UI
+│ └── pdf_styles.css # CSS for pdf
 │
+|── utils/
+| |── pdf_report.py # Counting Vluns and creating report
+|
 ├── requirements.txt # Python dependencies
 ├── Procfile # For deployment configuration
 ```
