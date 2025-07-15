@@ -37,6 +37,7 @@ To develop a Python-based tool that scans web applications for common security v
 ## Project Directory Structure
 
 Vuln Scanner/
+```
 │
 ├── app.py # Main Flask app
 ├── scanner.py # Scanning logic
@@ -53,7 +54,7 @@ Vuln Scanner/
 │
 ├── requirements.txt # Python dependencies
 ├── Procfile # For deployment configuration
-
+```
  
 ## Features
 
